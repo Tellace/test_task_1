@@ -17,4 +17,9 @@ class Layer {
 fitToContainer(cnv) {
     cnv.width = cnv.offSetWidth;
     cnv.height = cnv.offSetHeight;
+    }
+}
+
+onload = () => {
+    new App(document.querySelector(`field`));
 }
