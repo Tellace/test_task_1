@@ -1,8 +1,3 @@
-class field {
-    canvas = document.getElementById('canvas'),
-    ctx = canvas.getContext
-}
-
 class app {
     constructor(container) {
         this.layer = new Layer (container);
@@ -28,5 +23,3 @@ fitToContainer(cnv) {
 onload = () => {
     new App(document.querySelector(`field`));
 }
-
-
