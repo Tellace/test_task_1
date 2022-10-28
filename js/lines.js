@@ -1,98 +1,100 @@
-// class app {
-//     constructor(container) {
-//         this.layer = new Layer (container);
-//     }
-// }
+    // class app {
+    //     constructor(container) {
+    //         this.layer = new Layer (container);
+    //     }
+    // }
 
-// class Layer {
-//     constructor(container) {
-//         this.canvas = document.createElement(`canvas`); 
-//         this.context = this.canvas.getContext(`2d`);
-//         container.appendChild(this.canvas);
+    // class Layer {
+    //     constructor(container) {
+    //         this.canvas = document.createElement(`canvas`); 
+    //         this.context = this.canvas.getContext(`2d`);
+    //         container.appendChild(this.canvas);
 
-//         this.fitToContainer(this.canvas);
-//         addEventListener(`resize`, () => this.fitToContainer(this.canvas));
-//     }
+    //         this.fitToContainer(this.canvas);
+    //         addEventListener(`resize`, () => this.fitToContainer(this.canvas));
+    //     }
 
-// fitToContainer(cnv) {
-//     cnv.width = cnv.offSetWidth;
-//     cnv.height = cnv.offSetHeight;
-//     }
-// }
+    // fitToContainer(cnv) {
+    //     cnv.width = cnv.offSetWidth;
+    //     cnv.height = cnv.offSetHeight;
+    //     }
+    // }
 
-// onload = () => {
-//     new App(document.querySelector(`field`));
-// }
+    // onload = () => {
+    //     new App(document.querySelector(`field`));
+    // }
+
+    var 
+    canv = document.getElementById('canvas'),
+    ctx = canv.getContext('2d'),
+    isOnClick = false;
+
+    canv.width = window.innerWidth;
+    canv.height = window.innerHeight;
 
 
-                    var 
-                    canv = document.getElementById('canvas'),
-                    ctx = canv.getContext('2d'),
-                    isOnClick = false;
+    ctx.lineWidth = 10 * 2;
 
-                canv.width = window.innerWidth;
-                canv.height = window.innerHeight;
+    // canv.addEvenListener('onclick', function(e) {
+    //     isOnclick = true;
+    //     canv.beginPath();
+    // });
 
+    // canv.addEvenListener('onclick', function() {
+    //     isOnclick = false;
+    //     // ctx.beginPath();
+    //     ctx.closePath();
+    // });
 
-                ctx.lineWidth = 10 * 2;
+    // // ctx.beginPath();
+    // ctx.moveTo(e.clientX, e.clientY);
+    // ctx.lineTo(e.clientX, e.clientY);
+    // ctx.arc(e.clientX, e.clientY, 10, 0, Math.PI * 2);
+    // ctx.fill();
+    // ctx.stroke();
+    // ctx.closePath();
 
-                // canv.addEvenListener('onclick', function(e) {
-                //     isOnclick = true;
-                //     canv.beginPath();
-                // });
+    
+    canv.addEventListener('mousedown', function() {
+        isOnClick = true;
+    });
 
-                // canv.addEvenListener('onclick', function() {
-                //     isOnclick = false;
-                //     // ctx.beginPath();
-                //     ctx.closePath();
-                // });
+    canv.addEventListener('mouseup', function() {
+        isOnClick = Event.stopPropagation;
+        ctx.beginPath();
+    });
+    
+    ctx.lineWidth = 5 * 2;
+    canv.addEventListener('mousemove', function(e) {
 
-                // // ctx.beginPath();
-                // ctx.moveTo(e.clientX, e.clientY);
-                // ctx.lineTo(e.clientX, e.clientY);
-                // ctx.arc(e.clientX, e.clientY, 10, 0, Math.PI * 2);
-                // ctx.fill();
-                // ctx.stroke();
-                // ctx.closePath();
+        if( isOnClick) {
+        ctx.lineTo(e.clientX, e.clientY);
+        ctx.stroke();
 
-                
-                canv.addEventListener('mousedown', function() {
-                    isOnClick = true;
-                });
+        ctx.beginPath();
+        ctx.arc(e.clientX, e.clientY, 5, 0, Math.PI * 2);
+        ctx.fill();
 
-                canv.addEventListener('mouseup', function() {
-                    isOnClick = Event.stopPropagation;
-                    ctx.beginPath();
-                });
-                
-                ctx.lineWidth = 5 * 2;
-                canv.addEventListener('mousemove', function(e) {
+        ctx.beginPath();
+        ctx.moveTo(e.clientX, e.clientY);
+        }
+    });
 
-                    if( isOnClick) {
-                    ctx.lineTo(e.clientX, e.clientY);
-                    ctx.stroke();
+    // function clearall () {
+    // var canvas = document.getElementById('canvas'),
+    // ctx = canvas.getContext("2d");
+    // ctx.clearRect(0, 0, canvas.width, canvas.height);
+    // };
 
-                    ctx.beginPath();
-                    ctx.arc(e.clientX, e.clientY, 5, 0, Math.PI * 2);
-                    ctx.fill();
+    // jQuery('#clearBtn').click(function () {
+    //     ctx.clearRect(0, 0, canvas[0].width, canvas[0].height);
+    // });
 
-                    ctx.beginPath();
-                    ctx.moveTo(e.clientX, e.clientY);
-                    }
-                });
+    // function clearbtn () {
+    // context.clearRect(0,0,canvas.width,canvas.height);
+    // };
 
-                // function clearcanvas1() {
-                // var canvas = document.getElementById('canvas'),
-                // ctx = canvas.getContext("2d");
-                // ctx.clearRect(0, 0, canvas.width, canvas.height);
-                // };
-
-                // jQuery('#clearBtn').click(function () {
-                //     ctx.clearRect(0, 0, canvas[0].width, canvas[0].height);
-                // });
-
-                function clearbtn () {
-                context.clearRect(0,0,canvas.width,canvas.height);
-                };
-
-                
+    // var canvas = $( "#canvas" );
+    // $( "#clearbtn" ).on( "click", function( event ) {
+    // canvas.clear();
+    // });
