@@ -65,7 +65,7 @@
                     ctx.beginPath();
                 });
                 
-                ctx.lineWidth = 10 * 2;
+                ctx.lineWidth = 5 * 2;
                 canv.addEventListener('mousemove', function(e) {
 
                     if( isOnClick) {
@@ -73,12 +73,26 @@
                     ctx.stroke();
 
                     ctx.beginPath();
-                    ctx.arc(e.clientX, e.clientY, 10, 0, Math.PI * 2);
+                    ctx.arc(e.clientX, e.clientY, 5, 0, Math.PI * 2);
                     ctx.fill();
 
                     ctx.beginPath();
                     ctx.moveTo(e.clientX, e.clientY);
                     }
                 });
+
+                // function clearcanvas1() {
+                // var canvas = document.getElementById('canvas'),
+                // ctx = canvas.getContext("2d");
+                // ctx.clearRect(0, 0, canvas.width, canvas.height);
+                // };
+
+                // jQuery('#clearBtn').click(function () {
+                //     ctx.clearRect(0, 0, canvas[0].width, canvas[0].height);
+                // });
+
+                function clearbtn () {
+                context.clearRect(0,0,canvas.width,canvas.height);
+                };
 
                 
